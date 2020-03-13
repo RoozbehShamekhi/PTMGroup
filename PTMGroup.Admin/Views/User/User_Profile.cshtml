@@ -1,0 +1,313 @@
+﻿@model PTMGroup.Admin.Models.ViewModels.Model_User
+
+@{
+    ViewBag.Title = "اطلاعات کاربر";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<div class="panel panel-body panel-default navigation">
+
+    <div class="pull-left">
+        <h4 class="navigation-title"><b>@ViewBag.Title</b></h4>
+    </div>
+
+    @*<div class="pull-left" style="margin-left: 10px;" data-toggle='tooltip' data-placement='auto' title='برگشت به صفحه قبل'>
+            <a href="@Url.Action("Index")">
+                <i class="glyphicon glyphicon-arrow-left navigation-btn-icon"></i>
+            </a>
+        </div>*@
+
+    @*<div class="pull-left">
+            <h4 class="navigation-title"><b>@ViewBag.Title</b></h4>
+        </div>*@
+</div>
+
+<main class="panel row userprofile-main">
+
+    <aside class="col-md-3">
+
+        <div class="text-center userprofile-img">
+            <img src="~/Content/Images/abstract-user-flat-3.png" />
+        </div>
+
+        <div class="text-center userprofile-aside-btn-regine">
+            <a href="@Url.Action("ChangeInfo", "Student", new { id = Model.ID })" class="btn btn-warning fa fa-pencil" data-toggle='tooltip' data-placement='auto' title='ویرایش اطلاعات هویتی' style="margin: 0 10px; padding: 9px 13px;"></a>
+            <a href="javascript:void(0)" onclick="ChangeHealthInfo(@Model.ID)" class="btn btn-primary fa fa-edit" data-toggle='tooltip' data-placement='auto' title='ویرایش اطلاعات سلامت' style="margin: 0 10px; padding: 9px 13px;"></a>
+            <a href="javascript:void(0)" onclick="Delete(@Model.ID)" class="btn btn-danger fa fa-trash" data-toggle='tooltip' data-placement='auto' title='حذف' style="margin: 0 10px; padding: 9px 13px;"></a>
+        </div>
+
+        <div>
+            <ul class="nav userprofile-aside-item">
+                <li>@Model.Role</li>
+                <li>@Model.Name</li>
+                <li>@Model.Family</li>
+                <li>@Model.Mobile</li>
+            </ul>
+        </div>
+
+    </aside>
+
+    <section class="col-md-9 userprofile-section">
+
+        <ul class=" nav nav-tabs nav-justified userprofile-section-tabs">
+            <li class="active"><a href="#Description" data-toggle="tab">فعالیت ها</a></li>
+            <li><a href="#Details" data-toggle="tab">اطلاعات هویتی</a></li>
+            <li><a href="#Setting" data-toggle="tab">کنترل</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+            <div class="tab-pane fade in active" id="Description">
+                <div class="panel-group" id="gp">
+
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="Details" style="margin-top:15px">
+                <div id="Details-tabel">
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @(Model.Name == null ? "ثبت نشده" : Model.Name)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Family)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @(Model.Family == null ? "ثبت نشده" : Model.Family)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @(Model.Email == null ? "ثبت نشده" : Model.Email)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Mobile)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @(Model.Mobile == null ? "ثبت نشده" : Model.Mobile)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row userprofile-detiles-item" style="">
+                        <div class="col-md-3 userprofile-detiles-col-3-main">
+                            <div class="panel userprofile-detiles-col-3 ">
+                                <span class="userprofile-detiles-text">
+                                    @Html.DisplayNameFor(model => model.Gender)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="panel userprofile-detiles-col-9">
+                                <span class="userprofile-detiles-text">
+                                    @(Model.Gender == null ? "ثبت نشده" : Model.Gender)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="row userprofile-detiles-item" style="">
+                            <div class="col-md-3 userprofile-detiles-col-3-main">
+                                <div class="panel userprofile-detiles-col-3 ">
+                                    <span class="userprofile-detiles-text">
+                                        @Html.DisplayNameFor(model => model.BirthYear)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="panel userprofile-detiles-col-9">
+                                    <span class="userprofile-detiles-text">
+                                        @(Model.BirthYear == null ? "ثبت نشده" : Model.BirthYear)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+
+
+            <div class="tab-pane fade" style="padding: 15px 15px 0px 15px" id="Setting">
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        تغیر رمز عبور
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="ChangePassword(@Model.ID)"></a>
+                    </div>
+                </div>
+
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        ویرایش نقش
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="EditRole(@Model.ID))"></a>
+                    </div>
+                </div>
+
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        ویرایش اطلاعات
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-warning btn-sm glyphicon glyphicon-pencil" onclick="Edit(@Model.ID)"></a>
+                    </div>
+                </div>
+
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        حذف کاربر
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-danger btn-sm glyphicon glyphicon-trash" onclick="Delete(@Model.ID)"></a>
+                    </div>
+                </div>
+
+                @if (false)
+                {
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            تعلیق کاربر
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="control btn btn-danger btn-sm fa fa-user-slash" style="line-height: 18px;padding-left: 9px;padding-right: 9px;" onclick="BanUser(@Model.ID)"></a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="panel setting-col" style="line-height:40px;">
+                        <div class="pull-left setting-col-titel">
+                            <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                            رفع تعلیق
+                        </div>
+
+                        <div class="pull-right ">
+                            <a class="control btn btn-success btn-sm fa fa-user" style="line-height: 18px;padding-left: 11px;padding-right: 11px;" onclick="BanUser(@Model.ID)"></a>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+@Html.Partial("_Modal")
+
+@section Scripts {
+    <script>
+        $(function () {
+
+            $('.slim-scroll').slimScroll({
+                height: '370px'
+            });
+
+            $('#Details-tabel').slimScroll({
+                height: '450px'
+            });
+
+        });
+    </script>
+
+    <script>
+
+        function Delete(id) {
+            $.ajax({
+                url: "/User/User_Delete/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('حدف کاربر');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function Create() {
+            $.ajax({
+                url: "/User/User_Add",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('افزودن کاربر');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function Edit(id) {
+            $.ajax({
+                url: "/User/User_Edit/" + id,
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('ویرایش کاربر');
+                $('#myModalBody').html(result);
+            });
+        }
+
+    </script>
+}
+

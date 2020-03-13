@@ -1,0 +1,1564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PTMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_BaseRole">
+          <Key>
+            <PropertyRef Name="BR_ID" />
+          </Key>
+          <Property Name="BR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BR_Guid" Type="uniqueidentifier" />
+          <Property Name="BR_Name" Type="nvarchar" MaxLength="128" />
+          <Property Name="BR_Display" Type="nvarchar" MaxLength="128" />
+          <Property Name="BR_CreateDate" Type="datetime2" Precision="7" />
+          <Property Name="BR_ModifyDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Tbl_Client">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Client_LoginID" Type="int" Nullable="false" />
+          <Property Name="Client_DocumentID" Type="int" Nullable="false" />
+          <Property Name="Client_Titel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Client_Link" Type="nvarchar(max)" />
+          <Property Name="Client_IsActive" Type="bit" Nullable="false" />
+          <Property Name="Client_CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Code">
+          <Key>
+            <PropertyRef Name="Code_ID" />
+          </Key>
+          <Property Name="Code_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code_CGID" Type="int" Nullable="false" />
+          <Property Name="Code_Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Code_Display" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Code_IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_CodeGroup">
+          <Key>
+            <PropertyRef Name="CG_ID" />
+          </Key>
+          <Property Name="CG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CG_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CG_Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CG_Display" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ContactUs">
+          <Key>
+            <PropertyRef Name="CU_ID" />
+          </Key>
+          <Property Name="CU_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CU_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CU_Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="CU_Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CU_Subject" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CU_Massage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CU_CreateData" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CU_Read" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Document">
+          <Key>
+            <PropertyRef Name="Document_ID" />
+          </Key>
+          <Property Name="Document_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Document_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Document_LoginID" Type="int" Nullable="false" />
+          <Property Name="Document_TypeCodeID" Type="int" Nullable="false" />
+          <Property Name="Document_Path" Type="ntext" Nullable="false" />
+          <Property Name="Document_FolderName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Document_FileName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Document_CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Document_IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Login">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Login_UserID" Type="int" />
+          <Property Name="Login_BaseRoleID" Type="int" Nullable="false" />
+          <Property Name="Login_Mobile" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Login_MobileConfirmed" Type="bit" Nullable="false" />
+          <Property Name="Login_Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Login_PasswordHash" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login_PasswordSalt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login_IsActive" Type="bit" Nullable="false" />
+          <Property Name="Login_IsBan" Type="bit" Nullable="false" />
+          <Property Name="Login_IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Login_CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Login_ModifyDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_LoginToken">
+          <Key>
+            <PropertyRef Name="LT_ID" />
+          </Key>
+          <Property Name="LT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LT_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LT_LoginID" Type="int" Nullable="false" />
+          <Property Name="LT_TypeCodeID" Type="int" Nullable="false" />
+          <Property Name="LT_Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LT_CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="LT_ExpDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="LT_Expired" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Partner">
+          <Key>
+            <PropertyRef Name="Partner_ID" />
+          </Key>
+          <Property Name="Partner_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Partner_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Partner_LoginID" Type="int" Nullable="false" />
+          <Property Name="Partner_DocumentID" Type="int" Nullable="false" />
+          <Property Name="Partner_Titel" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Partner_Link" Type="nvarchar(max)" />
+          <Property Name="Partner_IsActive" Type="bit" Nullable="false" />
+          <Property Name="Partner_CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Product">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="Product_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Product_LoginID" Type="int" Nullable="false" />
+          <Property Name="Product_DocumentID" Type="int" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Product_Subject" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Product_Abstract" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Product_Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Slider">
+          <Key>
+            <PropertyRef Name="Slider_ID" />
+          </Key>
+          <Property Name="Slider_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Slider_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Slider_LoginID" Type="int" Nullable="false" />
+          <Property Name="Slider_DocumentID" Type="int" Nullable="false" />
+          <Property Name="Slider_Tital" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Slider_Subject" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Slider_Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Slider_Link" Type="nvarchar(max)" />
+          <Property Name="Slider_IsActive" Type="bit" Nullable="false" />
+          <Property Name="Slider_IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Slider_CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Slider_ModifyDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSProviderConfiguration">
+          <Key>
+            <PropertyRef Name="SPC_ID" />
+          </Key>
+          <Property Name="SPC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SPC_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SPC_Username" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SPC_Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SPC_ApiKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SPC_CreationDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SPC_ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SPC_IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSProviderNumber">
+          <Key>
+            <PropertyRef Name="SPN_ID" />
+          </Key>
+          <Property Name="SPN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SPN_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SPN_SPCID" Type="int" Nullable="false" />
+          <Property Name="SPN_Number" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SPN_CreationDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SPN_ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SPN_IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSResponse">
+          <Key>
+            <PropertyRef Name="SMS_ID" />
+          </Key>
+          <Property Name="SMS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMS_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SMS_Status" Type="int" Nullable="false" />
+          <Property Name="SMS_StatusText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SMS_MessageID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SMS_Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SMS_Token" Type="nvarchar" MaxLength="128" />
+          <Property Name="SMS_Token1" Type="nvarchar" MaxLength="128" />
+          <Property Name="SMS_Token2" Type="nvarchar" MaxLength="128" />
+          <Property Name="SMS_Sender" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SMS_Receptor" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SMS_Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SMS_Cost" Type="int" Nullable="false" />
+          <Property Name="SMS_CreationDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SMS_ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SMS_IsDelete" Type="bit" Nullable="false" />
+          <Property Name="SMS_STID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSSetting">
+          <Key>
+            <PropertyRef Name="SS_ID" />
+          </Key>
+          <Property Name="SS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SS_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SS_SPCID" Type="int" Nullable="false" />
+          <Property Name="SS_STID" Type="int" Nullable="false" />
+          <Property Name="SS_CreationDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SS_ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SS_IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSTemplate">
+          <Key>
+            <PropertyRef Name="ST_ID" />
+          </Key>
+          <Property Name="ST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ST_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ST_Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ST_IsDelete" Type="bit" Nullable="false" />
+          <Property Name="ST_CreationDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ST_ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User_GenderCodeID" Type="int" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="User_Family" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="User_Birtday" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Video">
+          <Key>
+            <PropertyRef Name="Video_ID" />
+          </Key>
+          <Property Name="Video_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Video_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Video_LoginID" Type="int" Nullable="false" />
+          <Property Name="Video_DocumentID" Type="int" Nullable="false" />
+          <Property Name="Video_Titel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Video_CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Video_IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Tbl_Client_Tbl_Document">
+          <End Role="Tbl_Document" Type="Self.Tbl_Document" Multiplicity="1" />
+          <End Role="Tbl_Client" Type="Self.Tbl_Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Client">
+              <PropertyRef Name="Client_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Client_Tbl_Login">
+          <End Role="Tbl_Login" Type="Self.Tbl_Login" Multiplicity="1" />
+          <End Role="Tbl_Client" Type="Self.Tbl_Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Client">
+              <PropertyRef Name="Client_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Code_Tbl_CodeGroup">
+          <End Role="Tbl_CodeGroup" Type="Self.Tbl_CodeGroup" Multiplicity="1" />
+          <End Role="Tbl_Code" Type="Self.Tbl_Code" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_CodeGroup">
+              <PropertyRef Name="CG_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Code">
+              <PropertyRef Name="Code_CGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Document_Tbl_Code">
+          <End Role="Tbl_Code" Type="Self.Tbl_Code" Multiplicity="1" />
+          <End Role="Tbl_Document" Type="Self.Tbl_Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Document">
+              <PropertyRef Name="Document_TypeCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Document_Tbl_Login">
+          <End Role="Tbl_Login" Type="Self.Tbl_Login" Multiplicity="1" />
+          <End Role="Tbl_Document" Type="Self.Tbl_Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Document">
+              <PropertyRef Name="Document_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Login_Tbl_BaseRole">
+          <End Role="Tbl_BaseRole" Type="Self.Tbl_BaseRole" Multiplicity="1" />
+          <End Role="Tbl_Login" Type="Self.Tbl_Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BaseRole">
+              <PropertyRef Name="BR_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Login">
+              <PropertyRef Name="Login_BaseRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Login_Tbl_User">
+          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="0..1" />
+          <End Role="Tbl_Login" Type="Self.Tbl_Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Login">
+              <PropertyRef Name="Login_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_LoginToken_Tbl_Code">
+          <End Role="Tbl_Code" Type="Self.Tbl_Code" Multiplicity="1" />
+          <End Role="Tbl_LoginToken" Type="Self.Tbl_LoginToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Tbl_LoginToken">
+              <PropertyRef Name="LT_TypeCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_LoginToken_Tbl_Login">
+          <End Role="Tbl_Login" Type="Self.Tbl_Login" Multiplicity="1" />
+          <End Role="Tbl_LoginToken" Type="Self.Tbl_LoginToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_LoginToken">
+              <PropertyRef Name="LT_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Partner_Tbl_Document">
+          <End Role="Tbl_Document" Type="Self.Tbl_Document" Multiplicity="1" />
+          <End Role="Tbl_Partner" Type="Self.Tbl_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Partner">
+              <PropertyRef Name="Partner_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Partner_Tbl_Login">
+          <End Role="Tbl_Login" Type="Self.Tbl_Login" Multiplicity="1" />
+          <End Role="Tbl_Partner" Type="Self.Tbl_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Partner">
+              <PropertyRef Name="Partner_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Product_Tbl_Document">
+          <End Role="Tbl_Document" Type="Self.Tbl_Document" Multiplicity="1" />
+          <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Product">
+              <PropertyRef Name="Product_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Product_Tbl_Login">
+          <End Role="Tbl_Login" Type="Self.Tbl_Login" Multiplicity="1" />
+          <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Product">
+              <PropertyRef Name="Product_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Slider_Tbl_Document">
+          <End Role="Tbl_Document" Type="Self.Tbl_Document" Multiplicity="1" />
+          <End Role="Tbl_Slider" Type="Self.Tbl_Slider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Slider">
+              <PropertyRef Name="Slider_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Slider_Tbl_Login">
+          <End Role="Tbl_Login" Type="Self.Tbl_Login" Multiplicity="1" />
+          <End Role="Tbl_Slider" Type="Self.Tbl_Slider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Slider">
+              <PropertyRef Name="Slider_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMSProviderNumber_Tbl_SMSProviderConfiguration">
+          <End Role="Tbl_SMSProviderConfiguration" Type="Self.Tbl_SMSProviderConfiguration" Multiplicity="1" />
+          <End Role="Tbl_SMSProviderNumber" Type="Self.Tbl_SMSProviderNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SMSProviderConfiguration">
+              <PropertyRef Name="SPC_ID" />
+            </Principal>
+            <Dependent Role="Tbl_SMSProviderNumber">
+              <PropertyRef Name="SPN_SPCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMSResponse_Tbl_SMSTemplate">
+          <End Role="Tbl_SMSTemplate" Type="Self.Tbl_SMSTemplate" Multiplicity="0..1" />
+          <End Role="Tbl_SMSResponse" Type="Self.Tbl_SMSResponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SMSTemplate">
+              <PropertyRef Name="ST_ID" />
+            </Principal>
+            <Dependent Role="Tbl_SMSResponse">
+              <PropertyRef Name="SMS_STID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMSSetting_Tbl_SMSProviderConfiguration">
+          <End Role="Tbl_SMSProviderConfiguration" Type="Self.Tbl_SMSProviderConfiguration" Multiplicity="1" />
+          <End Role="Tbl_SMSSetting" Type="Self.Tbl_SMSSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SMSProviderConfiguration">
+              <PropertyRef Name="SPC_ID" />
+            </Principal>
+            <Dependent Role="Tbl_SMSSetting">
+              <PropertyRef Name="SS_SPCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMSSetting_Tbl_SMSTemplate">
+          <End Role="Tbl_SMSTemplate" Type="Self.Tbl_SMSTemplate" Multiplicity="1" />
+          <End Role="Tbl_SMSSetting" Type="Self.Tbl_SMSSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SMSTemplate">
+              <PropertyRef Name="ST_ID" />
+            </Principal>
+            <Dependent Role="Tbl_SMSSetting">
+              <PropertyRef Name="SS_STID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_User_Tbl_Code">
+          <End Role="Tbl_Code" Type="Self.Tbl_Code" Multiplicity="1" />
+          <End Role="Tbl_User" Type="Self.Tbl_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Tbl_User">
+              <PropertyRef Name="User_GenderCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Video_Tbl_Document">
+          <End Role="Tbl_Document" Type="Self.Tbl_Document" Multiplicity="1" />
+          <End Role="Tbl_Video" Type="Self.Tbl_Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Video">
+              <PropertyRef Name="Video_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Video_Tbl_Login">
+          <End Role="Tbl_Login" Type="Self.Tbl_Login" Multiplicity="1" />
+          <End Role="Tbl_Video" Type="Self.Tbl_Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Video">
+              <PropertyRef Name="Video_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PTMModelStoreContainer">
+          <EntitySet Name="Tbl_BaseRole" EntityType="Self.Tbl_BaseRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Client" EntityType="Self.Tbl_Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Code" EntityType="Self.Tbl_Code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_CodeGroup" EntityType="Self.Tbl_CodeGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ContactUs" EntityType="Self.Tbl_ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Document" EntityType="Self.Tbl_Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Login" EntityType="Self.Tbl_Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_LoginToken" EntityType="Self.Tbl_LoginToken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Partner" EntityType="Self.Tbl_Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Slider" EntityType="Self.Tbl_Slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SMSProviderConfiguration" EntityType="Self.Tbl_SMSProviderConfiguration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SMSProviderNumber" EntityType="Self.Tbl_SMSProviderNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SMSResponse" EntityType="Self.Tbl_SMSResponse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SMSSetting" EntityType="Self.Tbl_SMSSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SMSTemplate" EntityType="Self.Tbl_SMSTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_User" EntityType="Self.Tbl_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Video" EntityType="Self.Tbl_Video" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Tbl_Client_Tbl_Document" Association="Self.FK_Tbl_Client_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Client" EntitySet="Tbl_Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Client_Tbl_Login" Association="Self.FK_Tbl_Client_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Client" EntitySet="Tbl_Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Code_Tbl_CodeGroup" Association="Self.FK_Tbl_Code_Tbl_CodeGroup">
+            <End Role="Tbl_CodeGroup" EntitySet="Tbl_CodeGroup" />
+            <End Role="Tbl_Code" EntitySet="Tbl_Code" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Document_Tbl_Code" Association="Self.FK_Tbl_Document_Tbl_Code">
+            <End Role="Tbl_Code" EntitySet="Tbl_Code" />
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Document_Tbl_Login" Association="Self.FK_Tbl_Document_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Login_Tbl_BaseRole" Association="Self.FK_Tbl_Login_Tbl_BaseRole">
+            <End Role="Tbl_BaseRole" EntitySet="Tbl_BaseRole" />
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Login_Tbl_User" Association="Self.FK_Tbl_Login_Tbl_User">
+            <End Role="Tbl_User" EntitySet="Tbl_User" />
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_LoginToken_Tbl_Code" Association="Self.FK_Tbl_LoginToken_Tbl_Code">
+            <End Role="Tbl_Code" EntitySet="Tbl_Code" />
+            <End Role="Tbl_LoginToken" EntitySet="Tbl_LoginToken" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_LoginToken_Tbl_Login" Association="Self.FK_Tbl_LoginToken_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_LoginToken" EntitySet="Tbl_LoginToken" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Partner_Tbl_Document" Association="Self.FK_Tbl_Partner_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Partner" EntitySet="Tbl_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Partner_Tbl_Login" Association="Self.FK_Tbl_Partner_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Partner" EntitySet="Tbl_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Product_Tbl_Document" Association="Self.FK_Tbl_Product_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Product_Tbl_Login" Association="Self.FK_Tbl_Product_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Slider_Tbl_Document" Association="Self.FK_Tbl_Slider_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Slider" EntitySet="Tbl_Slider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Slider_Tbl_Login" Association="Self.FK_Tbl_Slider_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Slider" EntitySet="Tbl_Slider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMSProviderNumber_Tbl_SMSProviderConfiguration" Association="Self.FK_Tbl_SMSProviderNumber_Tbl_SMSProviderConfiguration">
+            <End Role="Tbl_SMSProviderConfiguration" EntitySet="Tbl_SMSProviderConfiguration" />
+            <End Role="Tbl_SMSProviderNumber" EntitySet="Tbl_SMSProviderNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMSResponse_Tbl_SMSTemplate" Association="Self.FK_Tbl_SMSResponse_Tbl_SMSTemplate">
+            <End Role="Tbl_SMSTemplate" EntitySet="Tbl_SMSTemplate" />
+            <End Role="Tbl_SMSResponse" EntitySet="Tbl_SMSResponse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMSSetting_Tbl_SMSProviderConfiguration" Association="Self.FK_Tbl_SMSSetting_Tbl_SMSProviderConfiguration">
+            <End Role="Tbl_SMSProviderConfiguration" EntitySet="Tbl_SMSProviderConfiguration" />
+            <End Role="Tbl_SMSSetting" EntitySet="Tbl_SMSSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMSSetting_Tbl_SMSTemplate" Association="Self.FK_Tbl_SMSSetting_Tbl_SMSTemplate">
+            <End Role="Tbl_SMSTemplate" EntitySet="Tbl_SMSTemplate" />
+            <End Role="Tbl_SMSSetting" EntitySet="Tbl_SMSSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_User_Tbl_Code" Association="Self.FK_Tbl_User_Tbl_Code">
+            <End Role="Tbl_Code" EntitySet="Tbl_Code" />
+            <End Role="Tbl_User" EntitySet="Tbl_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Video_Tbl_Document" Association="Self.FK_Tbl_Video_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Video" EntitySet="Tbl_Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Video_Tbl_Login" Association="Self.FK_Tbl_Video_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Video" EntitySet="Tbl_Video" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PTMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PTMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_BaseRole" EntityType="PTMModel.Tbl_BaseRole" />
+          <EntitySet Name="Tbl_Client" EntityType="PTMModel.Tbl_Client" />
+          <EntitySet Name="Tbl_Code" EntityType="PTMModel.Tbl_Code" />
+          <EntitySet Name="Tbl_CodeGroup" EntityType="PTMModel.Tbl_CodeGroup" />
+          <EntitySet Name="Tbl_ContactUs" EntityType="PTMModel.Tbl_ContactUs" />
+          <EntitySet Name="Tbl_Document" EntityType="PTMModel.Tbl_Document" />
+          <EntitySet Name="Tbl_Login" EntityType="PTMModel.Tbl_Login" />
+          <EntitySet Name="Tbl_LoginToken" EntityType="PTMModel.Tbl_LoginToken" />
+          <EntitySet Name="Tbl_Partner" EntityType="PTMModel.Tbl_Partner" />
+          <EntitySet Name="Tbl_Product" EntityType="PTMModel.Tbl_Product" />
+          <EntitySet Name="Tbl_Slider" EntityType="PTMModel.Tbl_Slider" />
+          <EntitySet Name="Tbl_SMSProviderConfiguration" EntityType="PTMModel.Tbl_SMSProviderConfiguration" />
+          <EntitySet Name="Tbl_SMSProviderNumber" EntityType="PTMModel.Tbl_SMSProviderNumber" />
+          <EntitySet Name="Tbl_SMSResponse" EntityType="PTMModel.Tbl_SMSResponse" />
+          <EntitySet Name="Tbl_SMSSetting" EntityType="PTMModel.Tbl_SMSSetting" />
+          <EntitySet Name="Tbl_SMSTemplate" EntityType="PTMModel.Tbl_SMSTemplate" />
+          <EntitySet Name="Tbl_User" EntityType="PTMModel.Tbl_User" />
+          <EntitySet Name="Tbl_Video" EntityType="PTMModel.Tbl_Video" />
+          <AssociationSet Name="FK_Tbl_Login_Tbl_BaseRole" Association="PTMModel.FK_Tbl_Login_Tbl_BaseRole">
+            <End Role="Tbl_BaseRole" EntitySet="Tbl_BaseRole" />
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Client_Tbl_Document" Association="PTMModel.FK_Tbl_Client_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Client" EntitySet="Tbl_Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Client_Tbl_Login" Association="PTMModel.FK_Tbl_Client_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Client" EntitySet="Tbl_Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Code_Tbl_CodeGroup" Association="PTMModel.FK_Tbl_Code_Tbl_CodeGroup">
+            <End Role="Tbl_CodeGroup" EntitySet="Tbl_CodeGroup" />
+            <End Role="Tbl_Code" EntitySet="Tbl_Code" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Document_Tbl_Code" Association="PTMModel.FK_Tbl_Document_Tbl_Code">
+            <End Role="Tbl_Code" EntitySet="Tbl_Code" />
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_LoginToken_Tbl_Code" Association="PTMModel.FK_Tbl_LoginToken_Tbl_Code">
+            <End Role="Tbl_Code" EntitySet="Tbl_Code" />
+            <End Role="Tbl_LoginToken" EntitySet="Tbl_LoginToken" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_User_Tbl_Code" Association="PTMModel.FK_Tbl_User_Tbl_Code">
+            <End Role="Tbl_Code" EntitySet="Tbl_Code" />
+            <End Role="Tbl_User" EntitySet="Tbl_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Document_Tbl_Login" Association="PTMModel.FK_Tbl_Document_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Partner_Tbl_Document" Association="PTMModel.FK_Tbl_Partner_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Partner" EntitySet="Tbl_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Product_Tbl_Document" Association="PTMModel.FK_Tbl_Product_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Slider_Tbl_Document" Association="PTMModel.FK_Tbl_Slider_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Slider" EntitySet="Tbl_Slider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Video_Tbl_Document" Association="PTMModel.FK_Tbl_Video_Tbl_Document">
+            <End Role="Tbl_Document" EntitySet="Tbl_Document" />
+            <End Role="Tbl_Video" EntitySet="Tbl_Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Login_Tbl_User" Association="PTMModel.FK_Tbl_Login_Tbl_User">
+            <End Role="Tbl_User" EntitySet="Tbl_User" />
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_LoginToken_Tbl_Login" Association="PTMModel.FK_Tbl_LoginToken_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_LoginToken" EntitySet="Tbl_LoginToken" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Partner_Tbl_Login" Association="PTMModel.FK_Tbl_Partner_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Partner" EntitySet="Tbl_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Product_Tbl_Login" Association="PTMModel.FK_Tbl_Product_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Slider_Tbl_Login" Association="PTMModel.FK_Tbl_Slider_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Slider" EntitySet="Tbl_Slider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Video_Tbl_Login" Association="PTMModel.FK_Tbl_Video_Tbl_Login">
+            <End Role="Tbl_Login" EntitySet="Tbl_Login" />
+            <End Role="Tbl_Video" EntitySet="Tbl_Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMSProviderNumber_Tbl_SMSProviderConfiguration" Association="PTMModel.FK_Tbl_SMSProviderNumber_Tbl_SMSProviderConfiguration">
+            <End Role="Tbl_SMSProviderConfiguration" EntitySet="Tbl_SMSProviderConfiguration" />
+            <End Role="Tbl_SMSProviderNumber" EntitySet="Tbl_SMSProviderNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMSSetting_Tbl_SMSProviderConfiguration" Association="PTMModel.FK_Tbl_SMSSetting_Tbl_SMSProviderConfiguration">
+            <End Role="Tbl_SMSProviderConfiguration" EntitySet="Tbl_SMSProviderConfiguration" />
+            <End Role="Tbl_SMSSetting" EntitySet="Tbl_SMSSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMSResponse_Tbl_SMSTemplate" Association="PTMModel.FK_Tbl_SMSResponse_Tbl_SMSTemplate">
+            <End Role="Tbl_SMSTemplate" EntitySet="Tbl_SMSTemplate" />
+            <End Role="Tbl_SMSResponse" EntitySet="Tbl_SMSResponse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMSSetting_Tbl_SMSTemplate" Association="PTMModel.FK_Tbl_SMSSetting_Tbl_SMSTemplate">
+            <End Role="Tbl_SMSTemplate" EntitySet="Tbl_SMSTemplate" />
+            <End Role="Tbl_SMSSetting" EntitySet="Tbl_SMSSetting" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tbl_BaseRole">
+          <Key>
+            <PropertyRef Name="BR_ID" />
+          </Key>
+          <Property Name="BR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BR_Guid" Type="Guid" />
+          <Property Name="BR_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BR_Display" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BR_CreateDate" Type="DateTime" Precision="7" />
+          <Property Name="BR_ModifyDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Tbl_Login" Relationship="PTMModel.FK_Tbl_Login_Tbl_BaseRole" FromRole="Tbl_BaseRole" ToRole="Tbl_Login" />
+        </EntityType>
+        <EntityType Name="Tbl_Client">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Guid" Type="Guid" Nullable="false" />
+          <Property Name="Client_LoginID" Type="Int32" Nullable="false" />
+          <Property Name="Client_DocumentID" Type="Int32" Nullable="false" />
+          <Property Name="Client_Titel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Client_Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Client_IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Client_CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Tbl_Document" Relationship="PTMModel.FK_Tbl_Client_Tbl_Document" FromRole="Tbl_Client" ToRole="Tbl_Document" />
+          <NavigationProperty Name="Tbl_Login" Relationship="PTMModel.FK_Tbl_Client_Tbl_Login" FromRole="Tbl_Client" ToRole="Tbl_Login" />
+        </EntityType>
+        <EntityType Name="Tbl_Code">
+          <Key>
+            <PropertyRef Name="Code_ID" />
+          </Key>
+          <Property Name="Code_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code_Guid" Type="Guid" Nullable="false" />
+          <Property Name="Code_CGID" Type="Int32" Nullable="false" />
+          <Property Name="Code_Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Code_Display" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Code_IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_CodeGroup" Relationship="PTMModel.FK_Tbl_Code_Tbl_CodeGroup" FromRole="Tbl_Code" ToRole="Tbl_CodeGroup" />
+          <NavigationProperty Name="Tbl_Document" Relationship="PTMModel.FK_Tbl_Document_Tbl_Code" FromRole="Tbl_Code" ToRole="Tbl_Document" />
+          <NavigationProperty Name="Tbl_LoginToken" Relationship="PTMModel.FK_Tbl_LoginToken_Tbl_Code" FromRole="Tbl_Code" ToRole="Tbl_LoginToken" />
+          <NavigationProperty Name="Tbl_User" Relationship="PTMModel.FK_Tbl_User_Tbl_Code" FromRole="Tbl_Code" ToRole="Tbl_User" />
+        </EntityType>
+        <EntityType Name="Tbl_CodeGroup">
+          <Key>
+            <PropertyRef Name="CG_ID" />
+          </Key>
+          <Property Name="CG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CG_Guid" Type="Guid" Nullable="false" />
+          <Property Name="CG_Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CG_Display" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Code" Relationship="PTMModel.FK_Tbl_Code_Tbl_CodeGroup" FromRole="Tbl_CodeGroup" ToRole="Tbl_Code" />
+        </EntityType>
+        <EntityType Name="Tbl_ContactUs">
+          <Key>
+            <PropertyRef Name="CU_ID" />
+          </Key>
+          <Property Name="CU_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CU_Guid" Type="Guid" Nullable="false" />
+          <Property Name="CU_Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CU_Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CU_Subject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CU_Massage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CU_CreateData" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CU_Read" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Document">
+          <Key>
+            <PropertyRef Name="Document_ID" />
+          </Key>
+          <Property Name="Document_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Document_Guid" Type="Guid" Nullable="false" />
+          <Property Name="Document_LoginID" Type="Int32" Nullable="false" />
+          <Property Name="Document_TypeCodeID" Type="Int32" Nullable="false" />
+          <Property Name="Document_Path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Document_FolderName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Document_FileName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Document_CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Document_IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_Client" Relationship="PTMModel.FK_Tbl_Client_Tbl_Document" FromRole="Tbl_Document" ToRole="Tbl_Client" />
+          <NavigationProperty Name="Tbl_Code" Relationship="PTMModel.FK_Tbl_Document_Tbl_Code" FromRole="Tbl_Document" ToRole="Tbl_Code" />
+          <NavigationProperty Name="Tbl_Login" Relationship="PTMModel.FK_Tbl_Document_Tbl_Login" FromRole="Tbl_Document" ToRole="Tbl_Login" />
+          <NavigationProperty Name="Tbl_Partner" Relationship="PTMModel.FK_Tbl_Partner_Tbl_Document" FromRole="Tbl_Document" ToRole="Tbl_Partner" />
+          <NavigationProperty Name="Tbl_Product" Relationship="PTMModel.FK_Tbl_Product_Tbl_Document" FromRole="Tbl_Document" ToRole="Tbl_Product" />
+          <NavigationProperty Name="Tbl_Slider" Relationship="PTMModel.FK_Tbl_Slider_Tbl_Document" FromRole="Tbl_Document" ToRole="Tbl_Slider" />
+          <NavigationProperty Name="Tbl_Video" Relationship="PTMModel.FK_Tbl_Video_Tbl_Document" FromRole="Tbl_Document" ToRole="Tbl_Video" />
+        </EntityType>
+        <EntityType Name="Tbl_Login">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login_Guid" Type="Guid" Nullable="false" />
+          <Property Name="Login_UserID" Type="Int32" />
+          <Property Name="Login_BaseRoleID" Type="Int32" Nullable="false" />
+          <Property Name="Login_Mobile" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Login_MobileConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="Login_Email" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Login_PasswordHash" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login_PasswordSalt" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login_IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Login_IsBan" Type="Boolean" Nullable="false" />
+          <Property Name="Login_IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Login_CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Login_ModifyDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Tbl_BaseRole" Relationship="PTMModel.FK_Tbl_Login_Tbl_BaseRole" FromRole="Tbl_Login" ToRole="Tbl_BaseRole" />
+          <NavigationProperty Name="Tbl_Client" Relationship="PTMModel.FK_Tbl_Client_Tbl_Login" FromRole="Tbl_Login" ToRole="Tbl_Client" />
+          <NavigationProperty Name="Tbl_Document" Relationship="PTMModel.FK_Tbl_Document_Tbl_Login" FromRole="Tbl_Login" ToRole="Tbl_Document" />
+          <NavigationProperty Name="Tbl_User" Relationship="PTMModel.FK_Tbl_Login_Tbl_User" FromRole="Tbl_Login" ToRole="Tbl_User" />
+          <NavigationProperty Name="Tbl_LoginToken" Relationship="PTMModel.FK_Tbl_LoginToken_Tbl_Login" FromRole="Tbl_Login" ToRole="Tbl_LoginToken" />
+          <NavigationProperty Name="Tbl_Partner" Relationship="PTMModel.FK_Tbl_Partner_Tbl_Login" FromRole="Tbl_Login" ToRole="Tbl_Partner" />
+          <NavigationProperty Name="Tbl_Product" Relationship="PTMModel.FK_Tbl_Product_Tbl_Login" FromRole="Tbl_Login" ToRole="Tbl_Product" />
+          <NavigationProperty Name="Tbl_Slider" Relationship="PTMModel.FK_Tbl_Slider_Tbl_Login" FromRole="Tbl_Login" ToRole="Tbl_Slider" />
+          <NavigationProperty Name="Tbl_Video" Relationship="PTMModel.FK_Tbl_Video_Tbl_Login" FromRole="Tbl_Login" ToRole="Tbl_Video" />
+        </EntityType>
+        <EntityType Name="Tbl_LoginToken">
+          <Key>
+            <PropertyRef Name="LT_ID" />
+          </Key>
+          <Property Name="LT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LT_Guid" Type="Guid" Nullable="false" />
+          <Property Name="LT_LoginID" Type="Int32" Nullable="false" />
+          <Property Name="LT_TypeCodeID" Type="Int32" Nullable="false" />
+          <Property Name="LT_Key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LT_CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="LT_ExpDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="LT_Expired" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_Code" Relationship="PTMModel.FK_Tbl_LoginToken_Tbl_Code" FromRole="Tbl_LoginToken" ToRole="Tbl_Code" />
+          <NavigationProperty Name="Tbl_Login" Relationship="PTMModel.FK_Tbl_LoginToken_Tbl_Login" FromRole="Tbl_LoginToken" ToRole="Tbl_Login" />
+        </EntityType>
+        <EntityType Name="Tbl_Partner">
+          <Key>
+            <PropertyRef Name="Partner_ID" />
+          </Key>
+          <Property Name="Partner_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Partner_Guid" Type="Guid" Nullable="false" />
+          <Property Name="Partner_LoginID" Type="Int32" Nullable="false" />
+          <Property Name="Partner_DocumentID" Type="Int32" Nullable="false" />
+          <Property Name="Partner_Titel" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Partner_Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Partner_IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Partner_CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Tbl_Document" Relationship="PTMModel.FK_Tbl_Partner_Tbl_Document" FromRole="Tbl_Partner" ToRole="Tbl_Document" />
+          <NavigationProperty Name="Tbl_Login" Relationship="PTMModel.FK_Tbl_Partner_Tbl_Login" FromRole="Tbl_Partner" ToRole="Tbl_Login" />
+        </EntityType>
+        <EntityType Name="Tbl_Product">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="Product_Guid" Type="Guid" Nullable="false" />
+          <Property Name="Product_LoginID" Type="Int32" Nullable="false" />
+          <Property Name="Product_DocumentID" Type="Int32" Nullable="false" />
+          <Property Name="Product_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Subject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Abstract" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Document" Relationship="PTMModel.FK_Tbl_Product_Tbl_Document" FromRole="Tbl_Product" ToRole="Tbl_Document" />
+          <NavigationProperty Name="Tbl_Login" Relationship="PTMModel.FK_Tbl_Product_Tbl_Login" FromRole="Tbl_Product" ToRole="Tbl_Login" />
+        </EntityType>
+        <EntityType Name="Tbl_Slider">
+          <Key>
+            <PropertyRef Name="Slider_ID" />
+          </Key>
+          <Property Name="Slider_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Slider_Guid" Type="Guid" Nullable="false" />
+          <Property Name="Slider_LoginID" Type="Int32" Nullable="false" />
+          <Property Name="Slider_DocumentID" Type="Int32" Nullable="false" />
+          <Property Name="Slider_Tital" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Slider_Subject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Slider_Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Slider_Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Slider_IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Slider_IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Slider_CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Slider_ModifyDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Tbl_Document" Relationship="PTMModel.FK_Tbl_Slider_Tbl_Document" FromRole="Tbl_Slider" ToRole="Tbl_Document" />
+          <NavigationProperty Name="Tbl_Login" Relationship="PTMModel.FK_Tbl_Slider_Tbl_Login" FromRole="Tbl_Slider" ToRole="Tbl_Login" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSProviderConfiguration">
+          <Key>
+            <PropertyRef Name="SPC_ID" />
+          </Key>
+          <Property Name="SPC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SPC_Guid" Type="Guid" Nullable="false" />
+          <Property Name="SPC_Username" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SPC_Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SPC_ApiKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SPC_CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SPC_ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SPC_IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_SMSProviderNumber" Relationship="PTMModel.FK_Tbl_SMSProviderNumber_Tbl_SMSProviderConfiguration" FromRole="Tbl_SMSProviderConfiguration" ToRole="Tbl_SMSProviderNumber" />
+          <NavigationProperty Name="Tbl_SMSSetting" Relationship="PTMModel.FK_Tbl_SMSSetting_Tbl_SMSProviderConfiguration" FromRole="Tbl_SMSProviderConfiguration" ToRole="Tbl_SMSSetting" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSProviderNumber">
+          <Key>
+            <PropertyRef Name="SPN_ID" />
+          </Key>
+          <Property Name="SPN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SPN_Guid" Type="Guid" Nullable="false" />
+          <Property Name="SPN_SPCID" Type="Int32" Nullable="false" />
+          <Property Name="SPN_Number" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SPN_CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SPN_ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SPN_IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_SMSProviderConfiguration" Relationship="PTMModel.FK_Tbl_SMSProviderNumber_Tbl_SMSProviderConfiguration" FromRole="Tbl_SMSProviderNumber" ToRole="Tbl_SMSProviderConfiguration" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSResponse">
+          <Key>
+            <PropertyRef Name="SMS_ID" />
+          </Key>
+          <Property Name="SMS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SMS_Guid" Type="Guid" Nullable="false" />
+          <Property Name="SMS_Status" Type="Int32" Nullable="false" />
+          <Property Name="SMS_StatusText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SMS_MessageID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SMS_Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SMS_Token" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SMS_Token1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SMS_Token2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SMS_Sender" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SMS_Receptor" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SMS_Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SMS_Cost" Type="Int32" Nullable="false" />
+          <Property Name="SMS_CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SMS_ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SMS_IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="SMS_STID" Type="Int32" />
+          <NavigationProperty Name="Tbl_SMSTemplate" Relationship="PTMModel.FK_Tbl_SMSResponse_Tbl_SMSTemplate" FromRole="Tbl_SMSResponse" ToRole="Tbl_SMSTemplate" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSSetting">
+          <Key>
+            <PropertyRef Name="SS_ID" />
+          </Key>
+          <Property Name="SS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SS_Guid" Type="Guid" Nullable="false" />
+          <Property Name="SS_SPCID" Type="Int32" Nullable="false" />
+          <Property Name="SS_STID" Type="Int32" Nullable="false" />
+          <Property Name="SS_CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SS_ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SS_IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_SMSProviderConfiguration" Relationship="PTMModel.FK_Tbl_SMSSetting_Tbl_SMSProviderConfiguration" FromRole="Tbl_SMSSetting" ToRole="Tbl_SMSProviderConfiguration" />
+          <NavigationProperty Name="Tbl_SMSTemplate" Relationship="PTMModel.FK_Tbl_SMSSetting_Tbl_SMSTemplate" FromRole="Tbl_SMSSetting" ToRole="Tbl_SMSTemplate" />
+        </EntityType>
+        <EntityType Name="Tbl_SMSTemplate">
+          <Key>
+            <PropertyRef Name="ST_ID" />
+          </Key>
+          <Property Name="ST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ST_Guid" Type="Guid" Nullable="false" />
+          <Property Name="ST_Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ST_IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="ST_CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ST_ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Tbl_SMSResponse" Relationship="PTMModel.FK_Tbl_SMSResponse_Tbl_SMSTemplate" FromRole="Tbl_SMSTemplate" ToRole="Tbl_SMSResponse" />
+          <NavigationProperty Name="Tbl_SMSSetting" Relationship="PTMModel.FK_Tbl_SMSSetting_Tbl_SMSTemplate" FromRole="Tbl_SMSTemplate" ToRole="Tbl_SMSSetting" />
+        </EntityType>
+        <EntityType Name="Tbl_User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Guid" Type="Guid" Nullable="false" />
+          <Property Name="User_GenderCodeID" Type="Int32" Nullable="false" />
+          <Property Name="User_Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="User_Family" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="User_Birtday" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Tbl_Code" Relationship="PTMModel.FK_Tbl_User_Tbl_Code" FromRole="Tbl_User" ToRole="Tbl_Code" />
+          <NavigationProperty Name="Tbl_Login" Relationship="PTMModel.FK_Tbl_Login_Tbl_User" FromRole="Tbl_User" ToRole="Tbl_Login" />
+        </EntityType>
+        <EntityType Name="Tbl_Video">
+          <Key>
+            <PropertyRef Name="Video_ID" />
+          </Key>
+          <Property Name="Video_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Video_Guid" Type="Guid" Nullable="false" />
+          <Property Name="Video_LoginID" Type="Int32" Nullable="false" />
+          <Property Name="Video_DocumentID" Type="Int32" Nullable="false" />
+          <Property Name="Video_Titel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Video_CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Video_IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_Document" Relationship="PTMModel.FK_Tbl_Video_Tbl_Document" FromRole="Tbl_Video" ToRole="Tbl_Document" />
+          <NavigationProperty Name="Tbl_Login" Relationship="PTMModel.FK_Tbl_Video_Tbl_Login" FromRole="Tbl_Video" ToRole="Tbl_Login" />
+        </EntityType>
+        <Association Name="FK_Tbl_Login_Tbl_BaseRole">
+          <End Type="PTMModel.Tbl_BaseRole" Role="Tbl_BaseRole" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Login" Role="Tbl_Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BaseRole">
+              <PropertyRef Name="BR_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Login">
+              <PropertyRef Name="Login_BaseRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Client_Tbl_Document">
+          <End Type="PTMModel.Tbl_Document" Role="Tbl_Document" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Client" Role="Tbl_Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Client">
+              <PropertyRef Name="Client_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Client_Tbl_Login">
+          <End Type="PTMModel.Tbl_Login" Role="Tbl_Login" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Client" Role="Tbl_Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Client">
+              <PropertyRef Name="Client_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Code_Tbl_CodeGroup">
+          <End Type="PTMModel.Tbl_CodeGroup" Role="Tbl_CodeGroup" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Code" Role="Tbl_Code" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_CodeGroup">
+              <PropertyRef Name="CG_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Code">
+              <PropertyRef Name="Code_CGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Document_Tbl_Code">
+          <End Type="PTMModel.Tbl_Code" Role="Tbl_Code" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Document" Role="Tbl_Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Document">
+              <PropertyRef Name="Document_TypeCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_LoginToken_Tbl_Code">
+          <End Type="PTMModel.Tbl_Code" Role="Tbl_Code" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_LoginToken" Role="Tbl_LoginToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Tbl_LoginToken">
+              <PropertyRef Name="LT_TypeCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_User_Tbl_Code">
+          <End Type="PTMModel.Tbl_Code" Role="Tbl_Code" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_User" Role="Tbl_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Tbl_User">
+              <PropertyRef Name="User_GenderCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Document_Tbl_Login">
+          <End Type="PTMModel.Tbl_Login" Role="Tbl_Login" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Document" Role="Tbl_Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Document">
+              <PropertyRef Name="Document_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Partner_Tbl_Document">
+          <End Type="PTMModel.Tbl_Document" Role="Tbl_Document" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Partner" Role="Tbl_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Partner">
+              <PropertyRef Name="Partner_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Product_Tbl_Document">
+          <End Type="PTMModel.Tbl_Document" Role="Tbl_Document" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Product" Role="Tbl_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Product">
+              <PropertyRef Name="Product_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Slider_Tbl_Document">
+          <End Type="PTMModel.Tbl_Document" Role="Tbl_Document" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Slider" Role="Tbl_Slider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Slider">
+              <PropertyRef Name="Slider_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Video_Tbl_Document">
+          <End Type="PTMModel.Tbl_Document" Role="Tbl_Document" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Video" Role="Tbl_Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Document">
+              <PropertyRef Name="Document_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Video">
+              <PropertyRef Name="Video_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Login_Tbl_User">
+          <End Type="PTMModel.Tbl_User" Role="Tbl_User" Multiplicity="0..1" />
+          <End Type="PTMModel.Tbl_Login" Role="Tbl_Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Login">
+              <PropertyRef Name="Login_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_LoginToken_Tbl_Login">
+          <End Type="PTMModel.Tbl_Login" Role="Tbl_Login" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_LoginToken" Role="Tbl_LoginToken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_LoginToken">
+              <PropertyRef Name="LT_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Partner_Tbl_Login">
+          <End Type="PTMModel.Tbl_Login" Role="Tbl_Login" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Partner" Role="Tbl_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Partner">
+              <PropertyRef Name="Partner_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Product_Tbl_Login">
+          <End Type="PTMModel.Tbl_Login" Role="Tbl_Login" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Product" Role="Tbl_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Product">
+              <PropertyRef Name="Product_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Slider_Tbl_Login">
+          <End Type="PTMModel.Tbl_Login" Role="Tbl_Login" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Slider" Role="Tbl_Slider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Slider">
+              <PropertyRef Name="Slider_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Video_Tbl_Login">
+          <End Type="PTMModel.Tbl_Login" Role="Tbl_Login" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_Video" Role="Tbl_Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Login">
+              <PropertyRef Name="Login_ID" />
+            </Principal>
+            <Dependent Role="Tbl_Video">
+              <PropertyRef Name="Video_LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMSProviderNumber_Tbl_SMSProviderConfiguration">
+          <End Type="PTMModel.Tbl_SMSProviderConfiguration" Role="Tbl_SMSProviderConfiguration" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_SMSProviderNumber" Role="Tbl_SMSProviderNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SMSProviderConfiguration">
+              <PropertyRef Name="SPC_ID" />
+            </Principal>
+            <Dependent Role="Tbl_SMSProviderNumber">
+              <PropertyRef Name="SPN_SPCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMSSetting_Tbl_SMSProviderConfiguration">
+          <End Type="PTMModel.Tbl_SMSProviderConfiguration" Role="Tbl_SMSProviderConfiguration" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_SMSSetting" Role="Tbl_SMSSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SMSProviderConfiguration">
+              <PropertyRef Name="SPC_ID" />
+            </Principal>
+            <Dependent Role="Tbl_SMSSetting">
+              <PropertyRef Name="SS_SPCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMSResponse_Tbl_SMSTemplate">
+          <End Type="PTMModel.Tbl_SMSTemplate" Role="Tbl_SMSTemplate" Multiplicity="0..1" />
+          <End Type="PTMModel.Tbl_SMSResponse" Role="Tbl_SMSResponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SMSTemplate">
+              <PropertyRef Name="ST_ID" />
+            </Principal>
+            <Dependent Role="Tbl_SMSResponse">
+              <PropertyRef Name="SMS_STID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMSSetting_Tbl_SMSTemplate">
+          <End Type="PTMModel.Tbl_SMSTemplate" Role="Tbl_SMSTemplate" Multiplicity="1" />
+          <End Type="PTMModel.Tbl_SMSSetting" Role="Tbl_SMSSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SMSTemplate">
+              <PropertyRef Name="ST_ID" />
+            </Principal>
+            <Dependent Role="Tbl_SMSSetting">
+              <PropertyRef Name="SS_STID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PTMModelStoreContainer" CdmEntityContainer="PTMEntities">
+          <EntitySetMapping Name="Tbl_BaseRole">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_BaseRole">
+              <MappingFragment StoreEntitySet="Tbl_BaseRole">
+                <ScalarProperty Name="BR_ModifyDate" ColumnName="BR_ModifyDate" />
+                <ScalarProperty Name="BR_CreateDate" ColumnName="BR_CreateDate" />
+                <ScalarProperty Name="BR_Display" ColumnName="BR_Display" />
+                <ScalarProperty Name="BR_Name" ColumnName="BR_Name" />
+                <ScalarProperty Name="BR_Guid" ColumnName="BR_Guid" />
+                <ScalarProperty Name="BR_ID" ColumnName="BR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Client">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_Client">
+              <MappingFragment StoreEntitySet="Tbl_Client">
+                <ScalarProperty Name="Client_CreateDate" ColumnName="Client_CreateDate" />
+                <ScalarProperty Name="Client_IsActive" ColumnName="Client_IsActive" />
+                <ScalarProperty Name="Client_Link" ColumnName="Client_Link" />
+                <ScalarProperty Name="Client_Titel" ColumnName="Client_Titel" />
+                <ScalarProperty Name="Client_DocumentID" ColumnName="Client_DocumentID" />
+                <ScalarProperty Name="Client_LoginID" ColumnName="Client_LoginID" />
+                <ScalarProperty Name="Client_Guid" ColumnName="Client_Guid" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Code">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_Code">
+              <MappingFragment StoreEntitySet="Tbl_Code">
+                <ScalarProperty Name="Code_IsActive" ColumnName="Code_IsActive" />
+                <ScalarProperty Name="Code_Display" ColumnName="Code_Display" />
+                <ScalarProperty Name="Code_Name" ColumnName="Code_Name" />
+                <ScalarProperty Name="Code_CGID" ColumnName="Code_CGID" />
+                <ScalarProperty Name="Code_Guid" ColumnName="Code_Guid" />
+                <ScalarProperty Name="Code_ID" ColumnName="Code_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_CodeGroup">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_CodeGroup">
+              <MappingFragment StoreEntitySet="Tbl_CodeGroup">
+                <ScalarProperty Name="CG_Display" ColumnName="CG_Display" />
+                <ScalarProperty Name="CG_Name" ColumnName="CG_Name" />
+                <ScalarProperty Name="CG_Guid" ColumnName="CG_Guid" />
+                <ScalarProperty Name="CG_ID" ColumnName="CG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ContactUs">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_ContactUs">
+              <MappingFragment StoreEntitySet="Tbl_ContactUs">
+                <ScalarProperty Name="CU_Read" ColumnName="CU_Read" />
+                <ScalarProperty Name="CU_CreateData" ColumnName="CU_CreateData" />
+                <ScalarProperty Name="CU_Massage" ColumnName="CU_Massage" />
+                <ScalarProperty Name="CU_Subject" ColumnName="CU_Subject" />
+                <ScalarProperty Name="CU_Email" ColumnName="CU_Email" />
+                <ScalarProperty Name="CU_Name" ColumnName="CU_Name" />
+                <ScalarProperty Name="CU_Guid" ColumnName="CU_Guid" />
+                <ScalarProperty Name="CU_ID" ColumnName="CU_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Document">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_Document">
+              <MappingFragment StoreEntitySet="Tbl_Document">
+                <ScalarProperty Name="Document_IsDelete" ColumnName="Document_IsDelete" />
+                <ScalarProperty Name="Document_CreateDate" ColumnName="Document_CreateDate" />
+                <ScalarProperty Name="Document_FileName" ColumnName="Document_FileName" />
+                <ScalarProperty Name="Document_FolderName" ColumnName="Document_FolderName" />
+                <ScalarProperty Name="Document_Path" ColumnName="Document_Path" />
+                <ScalarProperty Name="Document_TypeCodeID" ColumnName="Document_TypeCodeID" />
+                <ScalarProperty Name="Document_LoginID" ColumnName="Document_LoginID" />
+                <ScalarProperty Name="Document_Guid" ColumnName="Document_Guid" />
+                <ScalarProperty Name="Document_ID" ColumnName="Document_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Login">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_Login">
+              <MappingFragment StoreEntitySet="Tbl_Login">
+                <ScalarProperty Name="Login_ModifyDate" ColumnName="Login_ModifyDate" />
+                <ScalarProperty Name="Login_CreateDate" ColumnName="Login_CreateDate" />
+                <ScalarProperty Name="Login_IsDelete" ColumnName="Login_IsDelete" />
+                <ScalarProperty Name="Login_IsBan" ColumnName="Login_IsBan" />
+                <ScalarProperty Name="Login_IsActive" ColumnName="Login_IsActive" />
+                <ScalarProperty Name="Login_PasswordSalt" ColumnName="Login_PasswordSalt" />
+                <ScalarProperty Name="Login_PasswordHash" ColumnName="Login_PasswordHash" />
+                <ScalarProperty Name="Login_Email" ColumnName="Login_Email" />
+                <ScalarProperty Name="Login_MobileConfirmed" ColumnName="Login_MobileConfirmed" />
+                <ScalarProperty Name="Login_Mobile" ColumnName="Login_Mobile" />
+                <ScalarProperty Name="Login_BaseRoleID" ColumnName="Login_BaseRoleID" />
+                <ScalarProperty Name="Login_UserID" ColumnName="Login_UserID" />
+                <ScalarProperty Name="Login_Guid" ColumnName="Login_Guid" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_LoginToken">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_LoginToken">
+              <MappingFragment StoreEntitySet="Tbl_LoginToken">
+                <ScalarProperty Name="LT_Expired" ColumnName="LT_Expired" />
+                <ScalarProperty Name="LT_ExpDate" ColumnName="LT_ExpDate" />
+                <ScalarProperty Name="LT_CreateDate" ColumnName="LT_CreateDate" />
+                <ScalarProperty Name="LT_Key" ColumnName="LT_Key" />
+                <ScalarProperty Name="LT_TypeCodeID" ColumnName="LT_TypeCodeID" />
+                <ScalarProperty Name="LT_LoginID" ColumnName="LT_LoginID" />
+                <ScalarProperty Name="LT_Guid" ColumnName="LT_Guid" />
+                <ScalarProperty Name="LT_ID" ColumnName="LT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Partner">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_Partner">
+              <MappingFragment StoreEntitySet="Tbl_Partner">
+                <ScalarProperty Name="Partner_CreateDate" ColumnName="Partner_CreateDate" />
+                <ScalarProperty Name="Partner_IsActive" ColumnName="Partner_IsActive" />
+                <ScalarProperty Name="Partner_Link" ColumnName="Partner_Link" />
+                <ScalarProperty Name="Partner_Titel" ColumnName="Partner_Titel" />
+                <ScalarProperty Name="Partner_DocumentID" ColumnName="Partner_DocumentID" />
+                <ScalarProperty Name="Partner_LoginID" ColumnName="Partner_LoginID" />
+                <ScalarProperty Name="Partner_Guid" ColumnName="Partner_Guid" />
+                <ScalarProperty Name="Partner_ID" ColumnName="Partner_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Product">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_Product">
+              <MappingFragment StoreEntitySet="Tbl_Product">
+                <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+                <ScalarProperty Name="Product_Abstract" ColumnName="Product_Abstract" />
+                <ScalarProperty Name="Product_Subject" ColumnName="Product_Subject" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_DocumentID" ColumnName="Product_DocumentID" />
+                <ScalarProperty Name="Product_LoginID" ColumnName="Product_LoginID" />
+                <ScalarProperty Name="Product_Guid" ColumnName="Product_Guid" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Slider">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_Slider">
+              <MappingFragment StoreEntitySet="Tbl_Slider">
+                <ScalarProperty Name="Slider_ModifyDate" ColumnName="Slider_ModifyDate" />
+                <ScalarProperty Name="Slider_CreateDate" ColumnName="Slider_CreateDate" />
+                <ScalarProperty Name="Slider_IsDelete" ColumnName="Slider_IsDelete" />
+                <ScalarProperty Name="Slider_IsActive" ColumnName="Slider_IsActive" />
+                <ScalarProperty Name="Slider_Link" ColumnName="Slider_Link" />
+                <ScalarProperty Name="Slider_Description" ColumnName="Slider_Description" />
+                <ScalarProperty Name="Slider_Subject" ColumnName="Slider_Subject" />
+                <ScalarProperty Name="Slider_Tital" ColumnName="Slider_Tital" />
+                <ScalarProperty Name="Slider_DocumentID" ColumnName="Slider_DocumentID" />
+                <ScalarProperty Name="Slider_LoginID" ColumnName="Slider_LoginID" />
+                <ScalarProperty Name="Slider_Guid" ColumnName="Slider_Guid" />
+                <ScalarProperty Name="Slider_ID" ColumnName="Slider_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SMSProviderConfiguration">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_SMSProviderConfiguration">
+              <MappingFragment StoreEntitySet="Tbl_SMSProviderConfiguration">
+                <ScalarProperty Name="SPC_IsDelete" ColumnName="SPC_IsDelete" />
+                <ScalarProperty Name="SPC_ModifiedDate" ColumnName="SPC_ModifiedDate" />
+                <ScalarProperty Name="SPC_CreationDate" ColumnName="SPC_CreationDate" />
+                <ScalarProperty Name="SPC_ApiKey" ColumnName="SPC_ApiKey" />
+                <ScalarProperty Name="SPC_Password" ColumnName="SPC_Password" />
+                <ScalarProperty Name="SPC_Username" ColumnName="SPC_Username" />
+                <ScalarProperty Name="SPC_Guid" ColumnName="SPC_Guid" />
+                <ScalarProperty Name="SPC_ID" ColumnName="SPC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SMSProviderNumber">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_SMSProviderNumber">
+              <MappingFragment StoreEntitySet="Tbl_SMSProviderNumber">
+                <ScalarProperty Name="SPN_IsDelete" ColumnName="SPN_IsDelete" />
+                <ScalarProperty Name="SPN_ModifiedDate" ColumnName="SPN_ModifiedDate" />
+                <ScalarProperty Name="SPN_CreationDate" ColumnName="SPN_CreationDate" />
+                <ScalarProperty Name="SPN_Number" ColumnName="SPN_Number" />
+                <ScalarProperty Name="SPN_SPCID" ColumnName="SPN_SPCID" />
+                <ScalarProperty Name="SPN_Guid" ColumnName="SPN_Guid" />
+                <ScalarProperty Name="SPN_ID" ColumnName="SPN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SMSResponse">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_SMSResponse">
+              <MappingFragment StoreEntitySet="Tbl_SMSResponse">
+                <ScalarProperty Name="SMS_STID" ColumnName="SMS_STID" />
+                <ScalarProperty Name="SMS_IsDelete" ColumnName="SMS_IsDelete" />
+                <ScalarProperty Name="SMS_ModifiedDate" ColumnName="SMS_ModifiedDate" />
+                <ScalarProperty Name="SMS_CreationDate" ColumnName="SMS_CreationDate" />
+                <ScalarProperty Name="SMS_Cost" ColumnName="SMS_Cost" />
+                <ScalarProperty Name="SMS_Date" ColumnName="SMS_Date" />
+                <ScalarProperty Name="SMS_Receptor" ColumnName="SMS_Receptor" />
+                <ScalarProperty Name="SMS_Sender" ColumnName="SMS_Sender" />
+                <ScalarProperty Name="SMS_Token2" ColumnName="SMS_Token2" />
+                <ScalarProperty Name="SMS_Token1" ColumnName="SMS_Token1" />
+                <ScalarProperty Name="SMS_Token" ColumnName="SMS_Token" />
+                <ScalarProperty Name="SMS_Message" ColumnName="SMS_Message" />
+                <ScalarProperty Name="SMS_MessageID" ColumnName="SMS_MessageID" />
+                <ScalarProperty Name="SMS_StatusText" ColumnName="SMS_StatusText" />
+                <ScalarProperty Name="SMS_Status" ColumnName="SMS_Status" />
+                <ScalarProperty Name="SMS_Guid" ColumnName="SMS_Guid" />
+                <ScalarProperty Name="SMS_ID" ColumnName="SMS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SMSSetting">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_SMSSetting">
+              <MappingFragment StoreEntitySet="Tbl_SMSSetting">
+                <ScalarProperty Name="SS_IsDelete" ColumnName="SS_IsDelete" />
+                <ScalarProperty Name="SS_ModifiedDate" ColumnName="SS_ModifiedDate" />
+                <ScalarProperty Name="SS_CreationDate" ColumnName="SS_CreationDate" />
+                <ScalarProperty Name="SS_STID" ColumnName="SS_STID" />
+                <ScalarProperty Name="SS_SPCID" ColumnName="SS_SPCID" />
+                <ScalarProperty Name="SS_Guid" ColumnName="SS_Guid" />
+                <ScalarProperty Name="SS_ID" ColumnName="SS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SMSTemplate">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_SMSTemplate">
+              <MappingFragment StoreEntitySet="Tbl_SMSTemplate">
+                <ScalarProperty Name="ST_ModifiedDate" ColumnName="ST_ModifiedDate" />
+                <ScalarProperty Name="ST_CreationDate" ColumnName="ST_CreationDate" />
+                <ScalarProperty Name="ST_IsDelete" ColumnName="ST_IsDelete" />
+                <ScalarProperty Name="ST_Name" ColumnName="ST_Name" />
+                <ScalarProperty Name="ST_Guid" ColumnName="ST_Guid" />
+                <ScalarProperty Name="ST_ID" ColumnName="ST_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_User">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_User">
+              <MappingFragment StoreEntitySet="Tbl_User">
+                <ScalarProperty Name="User_Birtday" ColumnName="User_Birtday" />
+                <ScalarProperty Name="User_Family" ColumnName="User_Family" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_GenderCodeID" ColumnName="User_GenderCodeID" />
+                <ScalarProperty Name="User_Guid" ColumnName="User_Guid" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Video">
+            <EntityTypeMapping TypeName="PTMModel.Tbl_Video">
+              <MappingFragment StoreEntitySet="Tbl_Video">
+                <ScalarProperty Name="Video_IsActive" ColumnName="Video_IsActive" />
+                <ScalarProperty Name="Video_CreateDate" ColumnName="Video_CreateDate" />
+                <ScalarProperty Name="Video_Titel" ColumnName="Video_Titel" />
+                <ScalarProperty Name="Video_DocumentID" ColumnName="Video_DocumentID" />
+                <ScalarProperty Name="Video_LoginID" ColumnName="Video_LoginID" />
+                <ScalarProperty Name="Video_Guid" ColumnName="Video_Guid" />
+                <ScalarProperty Name="Video_ID" ColumnName="Video_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

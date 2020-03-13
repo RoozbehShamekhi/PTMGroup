@@ -1,0 +1,215 @@
+﻿
+@{
+    ViewBag.Title = "تنظیمات";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<div class="panel panel-body panel-default  navigation">
+
+    <div class="pull-left">
+        <h4 class="navigation-title"><b>تنظیمات</b></h4>
+    </div>
+
+    <div class="pull-right">
+        @*<a href="#" onclick="Create()"><i class="glyphicon glyphicon-plus navigation-btn-icon"></i></a>*@
+    </div>
+
+</div>
+
+
+
+
+
+<div class="panel panel-default setting-panel">
+    <ul class=" nav nav-tabs nav-justified bookshow-panel-tabs">
+        <li class="active"><a href="#MainSite" data-toggle="tab">سایت اصلی</a></li>
+        <li><a href="#Users" data-toggle="tab">کاربران</a></li>
+        <li><a href="#Network" data-toggle="tab">شبکه</a></li>
+        <li><a href="#Server" data-toggle="tab">سرور</a></li>
+    </ul>
+
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="MainSite">
+
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        اسلایدر
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("Slider_List","Setting")"></a>
+                        <a class="control btn btn-success btn-sm glyphicon glyphicon-plus" onclick="Slider_Create()"></a>
+                    </div>
+                </div>
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        شرکا
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("Partner_List","Setting")"></a>
+                        <a class="control btn btn-success btn-sm glyphicon glyphicon-plus" onclick="Partner_Create()"></a>
+                    </div>
+                </div>
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        مشتریان
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("Client_List","Setting")"></a>
+                        <a class="control btn btn-success btn-sm glyphicon glyphicon-plus" onclick="Client_Create()"></a>
+                    </div>
+                </div>
+
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        محصولات
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("LibraryList","Setting")"></a>
+                        <a class="control btn btn-success btn-sm glyphicon glyphicon-plus" onclick="LibraryLocatCreate()"></a>
+                    </div>
+                </div>
+
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        ویدیو
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("Video_List","Setting")"></a>
+                        <a class="control btn btn-success btn-sm glyphicon glyphicon-plus" onclick="Video_Create()"></a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="tab-pane fade" id="Users">
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        نقش ها
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("Role_List","Setting")"></a>
+                        @*<a class="control btn btn-success btn-sm glyphicon glyphicon-plus" onclick="LibraryLocatCreate()"> </a>*@
+                    </div>
+                </div>
+
+                <div class="panel setting-col" style="line-height:40px;">
+                    <div class="pull-left setting-col-titel">
+                        <i class="glyphicon glyphicon-cog setting-col-titel-icon"></i>
+                        کاربران
+                    </div>
+
+                    <div class="pull-right ">
+                        <a class="control btn btn-primary btn-sm glyphicon glyphicon-list" href="@Url.Action("User_List","Setting")"></a>
+                        <a class="control btn btn-success btn-sm glyphicon glyphicon-plus" onclick="User_Create()"></a>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="tab-pane fade" id="Network">
+
+            </div>
+            <div class="tab-pane fade" id="Server">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+@Html.Partial("_Modal")
+
+@section Modal{
+    <script>
+
+        function User_Create() {
+            $.ajax({
+                url: "/Setting/User_Add",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('افزودن اسلایدر');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function Slider_Create() {
+            $.ajax({
+                url: "/Setting/Slider_Add",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('افزودن اسلایدر');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function Partner_Create() {
+            $.ajax({
+                url: "/Setting/Partner_Add",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('افزودن شرکا');
+                $('#myModalBody').html(result);
+            });
+        }
+
+        function Client_Create() {
+            $.ajax({
+                url: "/Setting/Client_Add",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('افزودن مشتریان');
+                $('#myModalBody').html(result);
+            });
+        }
+
+
+        function Video_Create() {
+            $.ajax({
+                url: "/Setting/Video_Add",
+                type: "Get",
+                data: {}
+            }).done(function (result) {
+                $('#myModal').modal('show');
+                $('#myModalLabel').html('افزودن ویدیو');
+                $('#myModalBody').html(result);
+            });
+        }
+
+    </script>
+}
+
+
+
+
+
+
+
+

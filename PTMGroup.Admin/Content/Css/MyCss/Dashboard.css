@@ -1,0 +1,652 @@
+﻿/*********************************************** General Style **************************************/
+body {
+    font-family: Iransans;
+    background-color: whitesmoke;
+    background-image: url('../Images/bg.jpg');
+}
+
+.modal {
+    color: whitesmoke;
+}
+
+.modal-content {
+    top: 15vh;
+    border-radius: 0px;
+    background-color: #222D32;
+    padding-bottom: 34px;
+}
+
+.modal-btn-singel {
+    border-radius: 0%;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-top: 30px;
+}
+
+.modal-btn-Dual {
+    border-radius: 0%;
+    width: 50%;
+    height: 100%;
+    display: block;
+}
+
+.modal-header {
+    border-bottom: 1px solid #9d9d9d;
+    margin-bottom: 10px;
+}
+
+.close {
+    position: relative;
+    top: 5px;
+    opacity: unset;
+    color: #9d9d9d;
+    text-shadow: none;
+}
+
+    .close:hover {
+        opacity: unset;
+        color: whitesmoke;
+    }
+
+    .close:focus {
+        opacity: unset;
+        color: #9d9d9d;
+    }
+
+.modal-main {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 12px;
+}
+
+.control {
+    margin: 2.5px 0;
+}
+
+/*********************************************** Config ********************************************/
+
+.Main-Config {
+    margin-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.aside-Config {
+    width: 270px;
+    margin-right: 15px;
+}
+
+.section-Config {
+    width: calc(100% - 315px);
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.section-without-login-Config {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 80px);
+}
+
+.div-without-login-Config {
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/*********************************************** navbar ********************************************/
+.navbar-inverse {
+    background-color: #222d32;
+    height: 60px;
+    border: none;
+    border-bottom: 3px solid #9d9d9d;
+}
+
+.navHeader {
+    height: 60px;
+    background-color: #222d32;
+    padding-top: 13px;
+    border-bottom: 3px solid #9d9d9d;
+    padding-right: 30px;
+}
+
+    .navHeader a {
+        text-decoration: none;
+        font-size: 20px;
+        color: #9d9d9d;
+    }
+
+.nav-item-out-login {
+    text-decoration: none;
+    font-size: 18px;
+    color: #9d9d9d;
+}
+
+.nav-item-out-login-a {
+    display: block;
+    padding: 0px;
+}
+
+.nav-item-out-login-a-i-search {
+    width: 30px;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 100%;
+    padding-top: 6px;
+    padding-right: 1px;
+    font-size: 14px;
+}
+
+.nav-item-out-login-a-i-login {
+    width: 30px;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 100%;
+    padding-top: 5.5px;
+    padding-right: 3px;
+    font-size: 14px;
+}
+
+.nav-item-out-login:hover, .nav-item-out-login:active {
+    text-decoration: none;
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+.main-header .navbar .nav > li > a > .label {
+    position: absolute;
+    top: 9px;
+    right: 7px;
+    text-align: center;
+    font-size: 9px;
+    padding: 2px 3px;
+    line-height: .9;
+}
+
+.nav-top-userInfo-icon {
+    width: 30px;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 100%;
+    padding-top: 6px;
+    padding-right: 6px;
+}
+
+.main-header .navbar-custom-menu, .main-header .navbar-right {
+    margin-left: 5px;
+    float: left;
+}
+
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    position: absolute;
+    right: auto;
+    left: 0;
+}
+
+.navbar-custom-menu > .navbar-nav > li {
+    margin-top: 0px;
+}
+
+.nav-username {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu {
+    border-radius: 0;
+    padding: 1px 0 0 0;
+    border-top-width: 0;
+    width: 280px;
+}
+
+    .navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+        height: 175px;
+        padding: 10px;
+        text-align: center;
+    }
+
+.main-header li.user-header {
+    background-color: #222d32;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
+    z-index: 5;
+    color: #fff;
+    color: rgba(255,255,255,0.8);
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-body {
+    padding: 10px;
+    border-top: 1px solid #dddddd;
+    height: 55px;
+    background-color: white;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+    background-color: #f9f9f9;
+    padding: 7px;
+    height: 50px;
+}
+
+/*********************************************** Aside *********************************************/
+.aside-panel {
+    background-color: #222d32;
+    padding: 0 0 10px 0;
+}
+
+    .aside-panel a {
+        color: #9d9d9d;
+    }
+
+.img-logo {
+    margin: 20px auto 20px auto;
+}
+
+.aside-panel li > a:hover, .aside-panel li > a:focus, .aside-panel li.active > a {
+    background-color: #222d32;
+    color: #fff;
+    border-right: 4px solid #3c8dbc;
+}
+
+
+.aside-sub-panel {
+    background-color: #2c3b41;
+    color: #9d9d9d;
+}
+
+    .aside-sub-panel li > a:hover, .aside-sub-panel li > a:focus, .aside-sub-panel li.active > a {
+        background-color: #2c3b41;
+        color: #fff;
+        border-right: 4px solid #6ca9cc;
+    }
+
+/*.dashboard-panel li :active > .gly-rotate-90, .dashboard-panel li :focus > .gly-rotate-90{
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}*/
+
+
+/*********************************************** Navigation **********************************************/
+.navigation {
+    margin-bottom: 15px;
+}
+
+.navigation-title {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.navigation-btn-icon {
+    width: 31px;
+    height: 31px;
+    border: 2px solid;
+    border-radius: 100%;
+    padding-top: 6px;
+    padding-right: 6px;
+}
+
+.breadcrumb {
+    padding: 5px;
+    margin-bottom: 0;
+    background-color: transparent;
+}
+
+    .breadcrumb > .active {
+        color: #333333;
+    }
+
+    .breadcrumb > li + li:before {
+        color: #333333;
+    }
+
+.navigation nav {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/*********************************************** Form **********************************************/
+.wtiau-btn {
+    border-radius: 0px;
+}
+
+.wtiau-btn-success {
+    background: #3ecf8e;
+    color: #fff;
+}
+
+    .wtiau-btn-success:hover {
+        background: #35996c;
+        color: #fff;
+    }
+
+.wtiau-btn-wtiau {
+    background: #3ecf8e;
+    color: #fff;
+}
+
+    .wtiau-btn-wtiau:hover {
+        background: #35996c;
+        color: #fff;
+    }
+
+.wtiau-btn-s {
+    padding: 0px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.wtiau-btn-sm {
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.wtiau-btn-L {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.wtiau-btn-LX {
+    wtiaupadding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.wtiau-btn-LXX {
+    padding: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/****************************************** Login/Register *****************************************/
+.login {
+    color: whitesmoke;
+}
+
+.Login-img {
+    padding: 15px;
+}
+
+
+
+.login-items > .form-group > input {
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    background: none;
+    background-image: none;
+    border: 1px solid #8285e9;
+    color: #fff;
+    border-radius: 0;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.login-items > .form-group > input {
+    outline: 0;
+    border-color: #8285e9;
+}
+
+
+/************************************************ Login ***********************************************/
+.form-login {
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+    max-width: 500px;
+}
+
+.login-logo {
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.login-button {
+    margin-bottom: 20px;
+}
+
+/*********************************************** Setting **********************************************/
+.setting-panel {
+    min-height: 400px;
+}
+
+.setting-panel-btn {
+    line-height: 10px;
+    margin-left: 20px
+}
+
+.setting-detiles-col-9 {
+    background-color: #222D32;
+    line-height: 40px;
+    border-radius: 0px;
+    margin-bottom: 10px;
+}
+
+.setting-col {
+    background-color: whitesmoke;
+    height: 43px;
+    border-radius: 0px;
+    padding-right: 8px;
+    padding-left: 8px;
+    margin-bottom: 10px;
+}
+
+.setting-col-titel {
+    color: black;
+}
+
+.setting-col-titel-icon {
+    top: 4px;
+}
+
+.setting-form-btn {
+    border-radius: 0%;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+/*********************************************** UserProfile **********************************************/
+.userprofile {
+    margin-top: 0;
+}
+
+.userprofile-header {
+    margin-bottom: 5px;
+}
+
+    .userprofile-header > div > span {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+.userprofile-main {
+    margin-left: 0px;
+    margin-right: 0px;
+    border: none;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+    .userprofile-main > aside {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+        height: 510px;
+        border-left: 1px solid #9d9d9d;
+    }
+
+.userprofile-img {
+    padding-top: 15px;
+}
+
+    .userprofile-img > img {
+        height: auto;
+        width: 15em;
+    }
+
+.userprofile-aside-btn-regine {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px 0 15px 0;
+}
+
+
+.userprofile-aside-item > li {
+    color: black;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.userprofile-section {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    height: 510px;
+}
+
+    .userprofile-section a {
+        text-decoration: none;
+    }
+
+    .userprofile-section > ul {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 5px
+    }
+
+
+.userprofile-File-panel {
+    border: 0px;
+}
+
+.userprofile-File-heading {
+    background-color: #f5f5f5;
+    border-radius: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-bottom: 3px solid #9d9d9d !important;
+}
+
+.userprofile-File-titel {
+    color: black;
+}
+
+.userprofile-File-body {
+    background-color: #f5f5f5;
+    height: 370px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.userprofile-detiles {
+    margin-top: 10px;
+}
+
+.userprofile-detiles-col-3-main {
+    padding-left: 0px;
+}
+
+.userprofile-detiles-col-3 {
+    background-color: #f5f5f5;
+    line-height: 40px;
+    border-radius: 0px;
+    margin-bottom: 10px;
+}
+
+.userprofile-detiles-col-9 {
+    background-color: #f5f5f5;
+    line-height: 40px;
+    border-radius: 0px;
+    margin-bottom: 10px;
+}
+
+.userprofile-detiles-text {
+    padding: 0px 15px 0px 0px;
+}
+
+.userprofile-detiles-item {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media screen and (max-width:990px) {
+    /*********************************************** General Style **************************************/
+
+    /*********************************************** Config ********************************************/
+    .Main-Config {
+        margin-top: 130px;
+    }
+
+    .aside-Config {
+        width: calc(100% - 30px);
+        margin-left: 15px;
+    }
+
+    .section-Config {
+        width: calc(100% - 30px);
+    }
+
+    /*********************************************** Aside *********************************************/
+
+
+    /*********************************************** navbar *********************************************/
+    .navHeader {
+        height: 60px;
+        background-color: #222d32;
+        padding-top: 13px;
+        border-bottom: 3px solid #9d9d9d;
+        text-align: center;
+    }
+
+    .navbar-custom-menu > .navbar-nav > li {
+        float: right;
+    }
+
+    .navbar-nav {
+        margin: 0px;
+    }
+
+    /*********************************************** UserProfile **********************************************/
+
+    .userprofile {
+        margin-top: 0px;
+    }
+
+    .userprofile-main > aside {
+        border-left: 0px solid #9d9d9d;
+    }
+
+    .userprofile-section {
+        height: unset;
+    }
+
+    .userprofile-detiles-col-3 {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .userprofile-detiles-col-9 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .userprofile-detiles-col-3-main {
+        padding-left: 15px;
+    }
+}
