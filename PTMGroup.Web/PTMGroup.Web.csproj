@@ -95,7 +95,56 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\Plugins\FontAwesome\all.min.css" />
+    <Content Include="Content\css\Plugins\Animate\animate.css" />
+    <Content Include="Content\css\Plugins\Bootstrap\bootstrap.min.css" />
+    <Content Include="Content\css\Plugins\MagnificPopUp\magnific-popup.css" />
+    <Content Include="Content\css\MyCss\normalize.css" />
+    <Content Include="Content\css\Plugins\Owl.Carousel\owl.carousel.min.css" />
+    <Content Include="Content\css\Plugins\Owl.Carousel\owl.theme.default.min.css" />
+    <Content Include="Content\css\MyCss\style.css" />
+    <Content Include="Content\img\baby-image.jpg" />
+    <Content Include="Content\img\DENTAL CLINIC.png" />
+    <Content Include="Content\img\Irankhudro.png" />
+    <Content Include="Content\img\MatagheazadeAnzali.png" />
+    <Content Include="Content\img\p1.png" />
+    <Content Include="Content\img\p2.png" />
+    <Content Include="Content\img\p3.png" />
+    <Content Include="Content\img\p4.png" />
+    <Content Include="Content\img\p5.png" />
+    <Content Include="Content\img\p6.png" />
+    <Content Include="Content\img\PalayeshnafteEsfehan.png" />
+    <Content Include="Content\img\pocket.jpg" />
+    <Content Include="Content\img\s1.jpeg" />
+    <Content Include="Content\img\s2.jpeg" />
+    <Content Include="Content\img\s3.jpeg" />
+    <Content Include="Content\img\TeaserIcon-Preventative.png" />
+    <Content Include="Content\img\tejaratBank.png" />
+    <Content Include="Content\img\video.jpg" />
+    <Content Include="Content\img\w1.jpg" />
+    <Content Include="Content\img\w10.jpg" />
+    <Content Include="Content\img\w2.jpg" />
+    <Content Include="Content\img\w3.jpg" />
+    <Content Include="Content\img\w4.jpg" />
+    <Content Include="Content\img\w5.jpg" />
+    <Content Include="Content\img\w6.jpg" />
+    <Content Include="Content\img\w7.jpg" />
+    <Content Include="Content\img\w8.jpg" />
+    <Content Include="Content\img\w9.jpg" />
+    <Content Include="Scripts\Plugins\FontAwesome\all.min.js" />
+    <Content Include="Scripts\Plugins\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\Plugins\MagnificPopUp\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\MyScripts\main.js" />
+    <Content Include="Scripts\MyScripts\popper.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Content\fonts\iran-yekan\iranyekan.eot" />
+    <Content Include="Content\fonts\iran-yekan\iranyekan.ttf" />
+    <Content Include="Content\fonts\iran-yekan\iranyekan.woff" />
+    <Content Include="Content\fonts\iran-yekan\iranyekan.woff2" />
+    <Content Include="Content\fonts\iran-yekan\iranyekanbold.eot" />
+    <Content Include="Content\fonts\iran-yekan\iranyekanbold.ttf" />
+    <Content Include="Content\fonts\iran-yekan\iranyekanbold.woff" />
+    <Content Include="Content\fonts\iran-yekan\iranyekanbold.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -109,13 +158,21 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Plugins\Owl.Carousel\owl.carousel.js" />
+    <Content Include="Scripts\Plugins\Owl.Carousel\owl.carousel.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\Model_Customer.cs" />
+    <Compile Include="Models\ViewModels\Model_Main.cs" />
+    <Compile Include="Models\ViewModels\Model_Partner.cs" />
+    <Compile Include="Models\ViewModels\Model_Slider.cs" />
+    <Compile Include="Models\ViewModels\Model_Video.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +180,8 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Shared\_Master.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -132,8 +191,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PTMGroup.DataLayer\PTMGroup.DataLayer.csproj">
+      <Project>{3848F1B9-9AC6-4B45-83DB-BD15D43FF368}</Project>
+      <Name>PTMGroup.DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -176,4 +239,11 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
+    <ItemGroup>
+      <RoslynFiles Include="$(CscToolPath)\*" />
+    </ItemGroup>
+    <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
+    <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
+  </Target>
 </Project>

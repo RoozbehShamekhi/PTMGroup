@@ -1,0 +1,481 @@
+﻿@model PTMGroup.Web.Models.ViewModels.Model_Main
+
+@{
+    ViewBag.Title = "صفحه اصلی";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<header>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="heading">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="float-left">
+                                <a href="@Url.Action("Index")" class="logo text-hide">
+                                    PTM Group
+                                    <img src="~/Content/img/DENTAL CLINIC.png" alt="Website logo">
+                                </a>
+                            </div>
+                            <div class="float-right">
+                                <a href="@Url.Content("https://localhost:44322/Account/Login")" class="btn btn-info">Login / Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @{ bool first = true; }
+            @foreach (var item in Model.Sliders)
+            {
+                if (first)
+                {
+                    <div class="carousel-item active" style="background-image: url(@Url.Content("https://localhost:44322/FileManager/Download/?Key=" + item.Slider_DocumentGuid))">
+                        <div class="container h-100">
+                            <div class="content animated fadeInUp">
+                                <h2>@item.Slider_Tital</h2>
+                                <h4>@item.Slider_Subject</h4>
+                                <span class="seperator"></span>
+                                <p>@item.Slider_Description</p>
+                            </div>
+                        </div>
+                    </div>
+                    first = false;
+                }
+                else
+                {
+                    <div class="carousel-item" style="background-image: url(@Url.Content("https://localhost:44322/FileManager/Download/?Key=" + item.Slider_DocumentGuid))">
+                        <div class="container h-100">
+                            <div class="content animated fadeInUp">
+                                <h2>@item.Slider_Tital</h2>
+                                <h4>@item.Slider_Subject</h4>
+                                <span class="seperator"></span>
+                                <p>@item.Slider_Description</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <nav class="container">
+        <div class="row">
+            <a href="#aboutUs" class="nav-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+                <div class="image"></div>
+                <h4>About Us</h4>
+            </a>
+            <a href="#workshops" class="nav-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+                <div class="image"></div>
+                <h4>Workshops</h4>
+            </a>
+            <a href="#products" class="nav-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+                <div class="image"></div>
+                <h4>Products</h4>
+            </a>
+            <a href="#videos" class="nav-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+                <div class="image"></div>
+                <h4>Videos</h4>
+            </a>
+            <a href="#contactUs" class="nav-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+                <div class="image"></div>
+                <h4>Contact Us</h4>
+            </a>
+            <a href="#partners" class="nav-item col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+                <div class="image"></div>
+                <h4>Partners</h4>
+            </a>
+        </div>
+    </nav>
+</header>
+<section id="aboutUs" class="container">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <h2 class="mb-2">WELCOME TO OUR DENTICAL CLINIC</h2>
+            <p>We' ve built a long standing relationship based on trust</p>
+        </div>
+        <div class="col-md-8">
+            <p>Personalized patient care is what sets Medicus Medical Center apart. When you visit one of our four San Francisco campus locations you can expect to receive world class care. Expert physician specialists and caring clinical staff provide you with an exceptional health care experience. Personalized patient care is what sets Medicus Medical Center apart.</p>
+            <h4 class="my-4">MODERN MEDICAL FACILITIES</h4>
+            <p>Personalized patient care is what sets Medicus Medical Center apart. When you visit one of our four San Francisco campus locations you can expect to receive world class care. Expert physician specialists and caring clinical staff provide you with an exceptional health care experience.</p>
+            <a href="#">CHECKOUT OUR FACILITIES</a>
+        </div>
+        <div class="col-md-4">
+            <div class="image"></div>
+            <div class="desc">
+                <h4>PATIENT & VISITOR GUIDE</h4>
+                <p>Plan your visit to our Clinic</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="partners" class="container">
+    <div class="row">
+        @foreach (var item in Model.Partners)
+        {
+            <div class="partner-box col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+                <div class="partner">
+                    <div class="image" style="background-image: url(@Url.Content("https://localhost:44322/FileManager/Download/?Key=" + item.Partner_DocumentGuid))"></div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<section id="workshops" class="container">
+    <div class="row">
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w1.jpg);"></a>
+            </div>
+        </div>
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w2.jpg);"></a>
+            </div>
+        </div>
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w3.jpg);"></a>
+            </div>
+        </div>
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w4.jpg);"></a>
+            </div>
+        </div>
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w5.jpg);"></a>
+            </div>
+        </div>
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w6.jpg);"></a>
+            </div>
+        </div>
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w7.jpg);"></a>
+            </div>
+        </div>
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w8.jpg);"></a>
+            </div>
+        </div>
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w9.jpg);"></a>
+            </div>
+        </div>
+        <div class="workshop-box col-md-4 col-lg-3">
+            <div class="workshop">
+                <a href="#test-form" class="image popup" style="background-image: url(/Content/img/w10.jpg);"></a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="product-card-imagebox">
+                        <img src="~/Content/img/baby-image.jpg" alt="" />
+                    </div>
+                    <div class="product-card-descbox">
+                        <h4 class="product-card-descbox-title">new 6 mnth babies</h4>
+                        <h4 class="product-card-descbox-subtitle">make with the best sperms</h4>
+                        <p class="product-card-descbox-desc">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eum expedita vitae necessitatibus animi. Tempore impedit ipsam fugit laboriosam?
+                        </p>
+                        <div class="product-card-descbox-info">
+                            <div class="product-card-descbox-info-pricebox">
+                                <i class="fa fa-money-bill product-card-descbox-info-priceicon"></i>
+                                <span class="product-card-descbox-info-price">4,550,000 $</span>
+                            </div>
+                            <div class="product-card-descbox-info-shopbox">
+                                <i class="fa fa-id-card product-card-descbox-info-shopicon"></i>
+                                <span class="product-card-descbox-info-shopbtn">Add To Card</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="product-card-imagebox">
+                        <img src="~/Content/img/baby-image.jpg" alt="" />
+                    </div>
+                    <div class="product-card-descbox">
+                        <h4 class="product-card-descbox-title">new 6 mnth babies</h4>
+                        <h4 class="product-card-descbox-subtitle">make with the best sperms</h4>
+                        <p class="product-card-descbox-desc">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eum expedita vitae necessitatibus animi. Tempore impedit ipsam fugit laboriosam?
+                        </p>
+                        <div class="product-card-descbox-info">
+                            <div class="product-card-descbox-info-pricebox">
+                                <i class="fa fa-money-bill product-card-descbox-info-priceicon"></i>
+                                <span class="product-card-descbox-info-price">4,550,000 $</span>
+                            </div>
+                            <div class="product-card-descbox-info-shopbox">
+                                <i class="fa fa-id-card product-card-descbox-info-shopicon"></i>
+                                <span class="product-card-descbox-info-shopbtn">Add To Card</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="product-card-imagebox">
+                        <img src="~/Content/img/baby-image.jpg" alt="" />
+                    </div>
+                    <div class="product-card-descbox">
+                        <h4 class="product-card-descbox-title">new 6 mnth babies</h4>
+                        <h4 class="product-card-descbox-subtitle">make with the best sperms</h4>
+                        <p class="product-card-descbox-desc">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eum expedita vitae necessitatibus animi. Tempore impedit ipsam fugit laboriosam?
+                        </p>
+                        <div class="product-card-descbox-info">
+                            <div class="product-card-descbox-info-pricebox">
+                                <i class="fa fa-money-bill product-card-descbox-info-priceicon"></i>
+                                <span class="product-card-descbox-info-price">4,550,000 $</span>
+                            </div>
+                            <div class="product-card-descbox-info-shopbox">
+                                <i class="fa fa-id-card product-card-descbox-info-shopicon"></i>
+                                <span class="product-card-descbox-info-shopbtn">Add To Card</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="product-card-imagebox">
+                        <img src="~/Content/img/baby-image.jpg" alt="" />
+                    </div>
+                    <div class="product-card-descbox">
+                        <h4 class="product-card-descbox-title">new 6 mnth babies</h4>
+                        <h4 class="product-card-descbox-subtitle">make with the best sperms</h4>
+                        <p class="product-card-descbox-desc">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eum expedita vitae necessitatibus animi. Tempore impedit ipsam fugit laboriosam?
+                        </p>
+                        <div class="product-card-descbox-info">
+                            <div class="product-card-descbox-info-pricebox">
+                                <i class="fa fa-money-bill product-card-descbox-info-priceicon"></i>
+                                <span class="product-card-descbox-info-price">4,550,000 $</span>
+                            </div>
+                            <div class="product-card-descbox-info-shopbox">
+                                <i class="fa fa-id-card product-card-descbox-info-shopicon"></i>
+                                <span class="product-card-descbox-info-shopbtn">Add To Card</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="videos" class="container">
+    <div class="row">
+        @foreach (var item in Model.Videos)
+        {
+            <div class="video-box col-md-4 col-lg-3">
+                <div class="video">
+                    <a href="#@item.Video_Guid" class="image popup" style="background-image: url(/Content/img/video.jpg);"></a>
+                </div>
+            </div>
+            <video id="@item.Video_Guid" class="mfp-hide video-popup animated pulse" controls autoplay>
+                <source src="@Url.Content("https://localhost:44322/FileManager/Download/?Key=" + item.Video_DocumentGuid)" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        }
+    </div>
+</section>
+<section id="contactUs">
+    @*<div id="map"></div>*@
+    <div class="container">
+        <div class="contact-box">
+            <form class="contact-form needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="nameInput">Your Name</label>
+                    <input type="text" class="form-control" id="nameInput" required />
+                    <div class="invalid-feedback">
+                        The field is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emailInput">Your Email</label>
+                    <input type="email" class="form-control" id="emailInput" required />
+                    <div class="invalid-feedback">
+                        The field is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subjectInput">Subject</label>
+                    <input type="text" class="form-control" id="subjectInput" />
+                </div>
+                <div class="form-group">
+                    <label for="messageInput">Message</label>
+                    <textarea type="text" class="form-control" id="messageInput" rows="6"></textarea>
+                </div>
+                <button class="btn btn-success" type="submit">send</button>
+            </form>
+
+            <div class="contact-desc">
+                <h4 class="contact-desc-title">Contact Info & Details</h4>
+                <p class="contact-desc-desc">
+                    Premium WordPress Theme mainly Medical Oriented but so flexible that lets you build various layouts for any “Health & Beauty” related business!
+                </p>
+                <div class="contact-desc-workhours">
+                    <b>Working hours:</b>
+                    <span> 9am – 5pm on weekdays</span>
+                </div>
+                <p class="contact-desc-phone">(+30) 210 1234567</p>
+                <p class="contact-desc-email">info@plethomedicalclinic.com</p>
+                <p class="contact-desc-address">
+                    79 Folsom Ave, San Francisco, CA 94107
+                    <a href="#">get directions</a>
+                </p>
+
+                <h4 class="contact-desc-subtitle">Appointment Request</h4>
+                <p class="contact-desc-subdesc">
+                    If you wish to book an appointment with a doctor, it is best that you visit the <a href="#">Appointment Booking Page</a> directly.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="customers">
+    <div class="owl-carousel owl-theme">
+        @foreach (var item in Model.Customers)
+        {
+            <img src="@Url.Content("https://localhost:44322/FileManager/Download/?Key=" + item.Client_DocumentGuid)" alt="@item.Client_Title">
+        }
+    </div>
+</section>
+<footer>
+    <div class="container footer-keeper">
+        <div class="footer-top">
+            <div class="footer-top-boxes">
+                <img src="~/Content/img/DENTAL CLINIC.png" alt="" class="footer-logo" />
+                <p class="footer-top-boxes1-desc">
+                    Premium HTML Template mainly Medical Oriented but so flexible that it can fit any Business Site!
+                </p>
+                <div class="footer-top-boxes1-phone">
+                    <a href="#" class="footer-top-boxes1-iconbox">
+                        <i class="fas fa-phone-alt footer-top-boxes1-phone-icon"></i>
+                    </a>
+                    <a href="#">(+30) 210 1234567</a>
+                </div>
+                <div class="footer-top-boxes1-email">
+                    <a href="#" class="footer-top-boxes1-iconbox">
+                        <i class="fas fa-envelope footer-top-boxes1-email-icon"></i>
+                    </a>
+                    <a href="#">info@plethorathemes.com</a>
+                </div>
+                <div class="footer-top-boxes1-addres">
+                    <!-- map-marked -->
+                    <a href="#" class="footer-top-boxes1-iconbox">
+                        <i class="fas fa-map-marked footer-top-boxes1-addres-icon"></i>
+                    </a>
+                    <a href="#">79 Folsom Ave, San Francisco, CA 94107</a>
+                </div>
+            </div>
+            <div class="footer-top-boxes footer-top-boxes2">
+                <h4 class="footer-top-boxes2-title">QUICK LINKS</h4>
+                <div class="footer-top-boxes2-linkbox">
+                    <i class="fas fa-arrow-alt-circle-right footer-top-boxes2-linkbox-icon"></i>
+                    <a href="#">Our Qualified Doctors</a>
+                </div>
+                <div class="footer-top-boxes2-linkbox">
+                    <i class="fas fa-arrow-alt-circle-right footer-top-boxes2-linkbox-icon"></i>
+                    <a href="#">Treatments and Dental Services</a>
+                </div>
+                <div class="footer-top-boxes2-linkbox">
+                    <i class="fas fa-arrow-alt-circle-right footer-top-boxes2-linkbox-icon"></i>
+                    <a href="#">Frequently Asked Questions</a>
+                </div>
+                <div class="footer-top-boxes2-linkbox">
+                    <i class="fas fa-arrow-alt-circle-right footer-top-boxes2-linkbox-icon"></i>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-top-boxes2-linkbox">
+                    <i class="fas fa-arrow-alt-circle-right footer-top-boxes2-linkbox-icon"></i>
+                    <a href="#">All Healthflex Demos</a>
+                </div>
+                <div class="footer-top-boxes2-socials">
+                    <div class="footer-top-boxes2-socials-twitter" title="twitter">
+                        <i class="fab fa-twitter footer-top-boxes2-socials-twitter-icon"></i>
+                    </div>
+                    <div class="footer-top-boxes2-socials-facebook" title="facebook">
+                        <i class="fab fa-facebook-f footer-top-boxes2-socials-facebook-icon"></i>
+                    </div>
+                    <div class="footer-top-boxes2-socials-linkedin" title="linkedin">
+                        <i class="fab fa-linkedin-in footer-top-boxes2-socials-linkedin-icon"></i>
+                    </div>
+                    <div class="footer-top-boxes2-socials-Email" title="Email">
+                        <i class="fas fa-envelope footer-top-boxes2-socials-Email-icon"></i>
+                    </div>
+                    <div class="footer-top-boxes2-socials-spotify" title="spotify">
+                        <i class="fab fa-spotify footer-top-boxes2-socials-spotify-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-top-boxes footer-top-boxes3">
+                <h4 class="footer-top-boxes2-title">HOURS OF OPERATION</h4>
+                <div class="footer-top-boxes3-datebox">
+                    <span>Monday:</span>
+                    <span>8:30 AM - 20:00 PM</span>
+                </div>
+                <div class="footer-top-boxes3-datebox">
+                    <span>Tuesday:</span>
+                    <span>8:30 AM - 20:00 PM</span>
+                </div>
+                <div class="footer-top-boxes3-datebox">
+                    <span>Wednesday:</span>
+                    <span>8:30 AM - 20:00 PM</span>
+                </div>
+                <div class="footer-top-boxes3-datebox">
+                    <span>Thursday:</span>
+                    <span>8:30 AM - 20:00 PM</span>
+                </div>
+                <div class="footer-top-boxes3-datebox">
+                    <span>Friday:</span>
+                    <span>8:30 AM - 20:00 PM</span>
+                </div>
+                <div class="footer-top-boxes3-datebox">
+                    <span>Saturday-Sunday:</span>
+                    <span>closed</span>
+                </div>
+                <a href="#" class="footer-top-boxes3-linkbox">
+                    <div class="footer-top-boxes3-linkbox-iconbox">
+                        <i class="fas fa-tooth footer-top-boxes3-linkbox-icon"></i>
+                    </div>
+                    <div class="footer-top-boxes3-linkbox-textbox">
+                        <span>MAKE AN APPOINTMENT</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="footer-bottom-copyright">Copyright ©2016 all rights reserved</p>
+        <p class="footer-bottom-designby">
+            Designed by
+            <a href="#">Plethora Themes</a> | Don't miss our
+            <a href="#">Portfolio</a>
+        </p>
+    </div>
+</footer>
+<form id="test-form" class="mfp-hide white-popup-block animated pulse">
+    <h1>:)</h1>
+</form>
