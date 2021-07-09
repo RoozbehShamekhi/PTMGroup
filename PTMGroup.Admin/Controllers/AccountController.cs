@@ -22,7 +22,7 @@ namespace PTMGroup.Admin.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Dashboard", "Dashboard");
+                return RedirectToAction("index", "Dashboard");
 
             }
             return View();
